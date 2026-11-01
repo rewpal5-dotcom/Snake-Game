@@ -2,9 +2,9 @@
 
 **Snake** — classic snake game, Android app ke roop mein (offline, full-screen).
 
-> **Status: v0.2 — game chal raha hai.** Board, snake, apple, score, levels, power-ups, settings, leaderboard — sab kaam kar rahe hain.
+> **Status: v0.1 — project ready (skeleton).** Saari files bani hui hain; game ka code `assets/game/` mein add hoga.
 
-## Game mein kya hai
+## Game (optional, `assets/game/snake.html`)
 
 - **20×20 board** (chhota/normal/bada chun sakte hain), neon look
 - **Swipe** (phone), **arrow keys / WASD** (computer), aur **on-screen D-pad**

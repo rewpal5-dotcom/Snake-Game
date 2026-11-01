@@ -183,8 +183,9 @@ Isi wajah se APK mein aap `.java` file nahi dekhenge — woh `classes.dex` ban j
 | 15 | `app/src/main/res/values/colors.xml` | ✔ | Rang |
 | 16 | `app/src/main/res/mipmap-*/ic_launcher.png` | ✔ | App icon (5 sizes) |
 | 17 | `app/src/main/assets/index.html` | ✔ (placeholder) | Abhi ka shuruaati page |
+| 17a | `app/src/main/assets/game/snake.html` | ✔ (optional) | Snake game ka code (baad mein isi jagah add hoga) |
 | 18 | `app/src/main/assets/config/app_config.json` | ✔ | Game settings |
-| 19 | `app/src/main/assets/game/` | ⏳ khali | Game ka code yahan aayega |
+| 19 | `app/src/main/assets/game/` | ✔ | Game ka code yahan rehta hai |
 | 20 | `.github/workflows/build-apk.yml` | ✔ | Har push par APK build + release |
 | 21 | `docs/FILES-HINDI.md` | ✔ | Yahi document |
 | 22 | `docs/FILE-TREE.txt` | ✔ | Folder tree |
