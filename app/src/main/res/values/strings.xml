@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- App ke saare text yahan rakhe jaate hain (multi-language ke liye values-hi/ bhi bana sakte hain) -->
+<resources>
+    <string name="app_name">Snake</string>
+</resources>

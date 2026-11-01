@@ -1,0 +1,15 @@
+{
+  "app": "Snake",
+  "version": "0.1",
+  "entry": "index.html",
+  "theme": "neon",
+  "features": {
+    "sound": true,
+    "vibration": true,
+    "highScore": true
+  },
+  "board": {
+    "cols": 20,
+    "rows": 20
+  }
+}

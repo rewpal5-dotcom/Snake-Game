@@ -1,0 +1,41 @@
+Snake/
+├── .github/
+│   └── workflows/
+│       └── build-apk.yml
+├── app/
+│   ├── build.gradle.kts
+│   ├── proguard-rules.pro
+│   └── src/
+│       └── main/
+│           ├── AndroidManifest.xml
+│           ├── java/
+│           │   └── com/snakegame/app/
+│           │       └── MainActivity.java
+│           ├── res/
+│           │   ├── mipmap-mdpi/ic_launcher.png
+│           │   ├── mipmap-hdpi/ic_launcher.png
+│           │   ├── mipmap-xhdpi/ic_launcher.png
+│           │   ├── mipmap-xxhdpi/ic_launcher.png
+│           │   ├── mipmap-xxxhdpi/ic_launcher.png
+│           │   └── values/
+│           │       ├── strings.xml
+│           │       └── colors.xml
+│           └── assets/
+│               ├── index.html
+│               ├── config/app_config.json
+│               └── game/            (game ka code yahan aayega)
+├── docs/
+│   ├── FILES-HINDI.md
+│   ├── FILE-TREE.txt
+│   └── ROADMAP.md
+├── gradle/wrapper/
+│   ├── gradle-wrapper.jar
+│   └── gradle-wrapper.properties
+├── build.gradle.kts
+├── settings.gradle.kts
+├── gradle.properties
+├── gradlew
+├── gradlew.bat
+├── .gitignore
+├── LICENSE
+└── README.md
