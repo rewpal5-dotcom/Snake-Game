@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8">
+<title>Snake — Files ki Poori Documentary</title>
+<style>
+  @page { size: A4; margin: 16mm 14mm; }
+  body{ font-family:"Noto Sans Devanagari","Noto Sans",Arial,sans-serif; font-size:10.5pt; line-height:1.55; color:#12222f; }
+  h1{ font-size:22pt; margin:0 0 6px; color:#0b3d2c; }
+  h2{ font-size:14pt; margin:18px 0 6px; color:#0f766e; border-bottom:1.5px solid #cfe8dd; padding-bottom:3px; }
+  h3{ font-size:11.5pt; margin:12px 0 4px; color:#155e75; }
+  p{ margin:5px 0; }
+  table{ border-collapse:collapse; width:100%; margin:8px 0 10px; font-size:9.4pt; }
+  th,td{ border:1px solid #cbd8e2; padding:5px 7px; text-align:left; vertical-align:top; }
+  th{ background:#eef7f4; font-weight:700; }
+  tr:nth-child(even) td{ background:#f8fbfd; }
+  code{ background:#f1f5f9; padding:1px 4px; border-radius:3px; font-family:"DejaVu Sans Mono",monospace; font-size:9pt; }
+  pre{ background:#0f1b2a; color:#d9e7f5; padding:10px 12px; border-radius:6px; font-size:8.6pt; overflow:hidden; white-space:pre-wrap; }
+  pre code{ background:none; color:inherit; }
+  hr{ border:0; border-top:1px dashed #cbd8e2; margin:14px 0; }
+  ul,ol{ margin:5px 0 8px 20px; }
+  li{ margin:2px 0; }
+  blockquote{ border-left:3px solid #0f766e; margin:8px 0; padding:4px 10px; color:#2b4a5a; background:#f4faf8; }
+  a{ color:#0e7490; text-decoration:none; }
+</style></head><body>
+<h1>Snake — Files ki Poori Documentary (Hindi)</h1>
+<p><strong>Project:</strong> Snake (Android + HTML5 game)</p>
+<p><strong>Version:</strong> 0.1 (skeleton — sirf dhancha, game ka code baad mein)</p>
+<p><strong>Yeh document kya hai:</strong> is project ki <strong>har file aur har folder</strong> ka kaam, ek jagah, Hindi mein. Naya developer ise padh kar poora project samajh sakta hai.</p>
+<hr/>
+<h2>0. Sabse pehle: Project aur APK alag cheezein hain</h2>
+<table><thead><tr><th></th><th><strong>Project</strong> (source)</th><th><strong>APK</strong> (banaya hua package)</th></tr></thead><tbody><tr><td>Kya hai</td><td>Aapka code, files, folders</td><td>Install hone wali file</td></tr><tr><td>Kahan</td><td>Computer / GitHub</td><td>Phone</td></tr><tr><td>Andar</td><td><code>.java</code>, <code>.kts</code>, <code>.xml</code>, <code>.html</code></td><td><code>classes.dex</code>, <code>resources.arsc</code>, <code>lib/</code>, <code>META-INF/</code></td></tr><tr><td>Badal sakte hain?</td><td>Haan, jab chahein</td><td>Nahi — dobara build karna padta hai</td></tr></tbody></table>
+<hr/>
+<h2>1. Poora folder structure</h2>
+<pre><code>Snake/
+├── .github/
+│   └── workflows/
+│       └── build-apk.yml          ← GitHub Actions: har push par APK banata hai
+├── app/                           ← App module (asli app yahan hai)
+│   ├── build.gradle.kts           ← App ki build settings
+│   ├── proguard-rules.pro         ← Release build ke rules
+│   └── src/
+│       └── main/
+│           ├── AndroidManifest.xml    ← App ki pehchaan, permissions, screens
+│           ├── java/com/snakegame/app/
+│           │   └── MainActivity.java  ← App ka pehla (aur abhi akela) screen
+│           ├── res/
+│           │   └── values/
+│           │       ├── strings.xml    ← App ka naam / text
+│           │       └── colors.xml     ← Rang
+│           └── assets/                ← Raw files (jo code se padhi jaati hain)
+│               ├── index.html         ← Abhi ka placeholder page
+│               ├── config/
+│               │   └── app_config.json ← Game ki settings (board size, features)
+│               └── game/              ← Game ka asli code yahan aayega
+├── docs/
+│   ├── FILES-HINDI.md             ← Yahi document
+│   ├── FILE-TREE.txt              ← Sirf folder tree
+│   └── ROADMAP.md                 ← Aage kya-kya banega
+├── gradle/
+│   └── wrapper/
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── build.gradle.kts               ← Project-level build file
+├── settings.gradle.kts            ← Kaunse module hain + repositories
+├── gradle.properties              ← Gradle ki settings
+├── gradlew / gradlew.bat          ← Gradle chalane wali script (Linux/Mac / Windows)
+├── .gitignore                     ← Git ko kaunsi files nahi bhejni
+├── LICENSE                        ← MIT license
+└── README.md                      ← Project ka parichay</code></pre>
+<hr/>
+<h2>2. Root (sabse bahar wali) files</h2>
+<table><thead><tr><th>File</th><th>Kaam</th></tr></thead><tbody><tr><td><code>settings.gradle.kts</code></td><td>Batata hai ki project mein kaunse module hain (<code>:app</code>) aur libraries kahan se aayengi (Google, Maven Central).</td></tr><tr><td><code>build.gradle.kts</code> (root)</td><td>Project-level plugins — jaise Android plugin ka version (8.9.3).</td></tr><tr><td><code>gradle.properties</code></td><td>Gradle ki settings: memory, caching, AndroidX on/off.</td></tr><tr><td><code>gradlew</code>, <code>gradlew.bat</code></td><td>Gradle ko chalane wali script. <code>./gradlew assembleDebug</code> isi se chalta hai. Ye Gradle ko khud download karti hai.</td></tr><tr><td><code>gradle/wrapper/*</code></td><td>Wrapper ki files — batati hain kaunsa Gradle version use hoga (8.11.1).</td></tr><tr><td><code>.gitignore</code></td><td>Git in files ko ignore karta hai: <code>build/</code>, <code>.gradle/</code>, <code>local.properties</code>, <code>*.apk</code> wagairah.</td></tr><tr><td><code>LICENSE</code></td><td>MIT license — code ka istemal karne ki shartein.</td></tr><tr><td><code>README.md</code></td><td>Project ka parichay, install steps, links.</td></tr><tr><td><code>local.properties</code></td><td><strong>Is machine par</strong> Android SDK ka path. Ye GitHub par nahi jaati (gitignored), har computer par alag hoti hai.</td></tr></tbody></table>
+<hr/>
+<h2>3. <code>app/</code> — app module</h2>
+<table><thead><tr><th>File</th><th>Kaam</th></tr></thead><tbody><tr><td><code>app/build.gradle.kts</code></td><td>App ka <code>namespace</code>, <code>applicationId</code> (play store par permanent ID), <code>minSdk</code> 24, <code>targetSdk</code> 35, <code>compileSdk</code> 36, version, build types.</td></tr><tr><td><code>app/proguard-rules.pro</code></td><td>Release build mein code chhota/obfuscate karne ke rules.</td></tr><tr><td><code>app/src/main/AndroidManifest.xml</code></td><td>App ki pehchaan: naam, icon, theme, permissions, kaunsi activity pehle khulegi.</td></tr><tr><td><code>app/src/main/java/…</code></td><td>Java/Kotlin code — yahan <code>MainActivity</code> hai.</td></tr><tr><td><code>app/src/main/res/…</code></td><td>Android resources — text (<code>values/</code>), images (<code>drawable/</code>, <code>mipmap/</code>), layouts (<code>layout/</code>).</td></tr><tr><td><code>app/src/main/assets/…</code></td><td>Raw files jo app apne naam se padhta hai (yahan game ka HTML/JS).</td></tr></tbody></table>
+<h3>AndroidManifest.xml mein kya-kya hota hai</h3>
+<ul><li><code>&lt;uses-permission&gt;</code> — jaise INTERNET, CAMERA</li><li><code>&lt;application&gt;</code> — icon, label, theme</li><li><code>&lt;activity&gt;</code> — screens; <code>LAUNCHER</code> intent-filter wali activity app khulte hi chalti hai</li><li><code>android:exported=&quot;true&quot;</code> — launcher activity ke liye zaroori</li></ul>
+<hr/>
+<h2>4. <code>res/</code> ke andar kaunse folder hote hain</h2>
+<table><thead><tr><th>Folder</th><th>Kaam</th><th>Example</th></tr></thead><tbody><tr><td><code>values/</code></td><td>Text, colours, styles</td><td><code>strings.xml</code>, <code>colors.xml</code>, <code>themes.xml</code></td></tr><tr><td><code>drawable/</code></td><td>Images / shapes</td><td><code>bg_card.xml</code>, <code>logo.png</code></td></tr><tr><td><code>mipmap-*/</code></td><td>App icon (har screen density ke liye alag size)</td><td><code>ic_launcher.png</code></td></tr><tr><td><code>layout/</code></td><td>Screen ka design (XML)</td><td><code>activity_main.xml</code></td></tr><tr><td><code>xml/</code></td><td>Settings files</td><td><code>backup_rules.xml</code></td></tr><tr><td><code>raw/</code></td><td>Media files</td><td><code>beep.mp3</code></td></tr><tr><td><code>anim/</code></td><td>Animations</td><td><code>slide_in.xml</code></td></tr></tbody></table>
+<p><strong>Naming rule:</strong> file ka naam <strong>chhote letters</strong>, <strong>underscore</strong>, aur <strong>number se shuru nahi</strong> — <code>my_icon.png</code> ✔, <code>My-Icon.png</code> ✘.</p>
+<hr/>
+<h2>5. <code>assets/</code> — game ka ghar</h2>
+<table><thead><tr><th>File</th><th>Kaam</th></tr></thead><tbody><tr><td><code>assets/index.html</code></td><td>App khulte hi yahi page khulta hai (abhi placeholder hai).</td></tr><tr><td><code>assets/config/app_config.json</code></td><td>Game ki settings — board ka size, sound on/off, theme. Code badalne ke bina behaviour badal sakte hain.</td></tr><tr><td><code>assets/game/</code></td><td>Aage game ka asli code (JS files, sprites, sounds) yahan aayega.</td></tr></tbody></table>
+<p><strong><code>assets</code> aur <code>res</code> mein farak:</strong> <code>res</code> ki files Android compile karta hai (R.java ke through), <code>assets</code> ki files jaisi hain waisi hi rehti hain aur code se path se padhi jaati hain (<code>file:///android_asset/index.html</code>).</p>
+<hr/>
+<h2>6. APK ke andar kya hota hai</h2>
+<p><code>app-debug.apk</code> ek ZIP hai, uske andar:</p>
+<table><thead><tr><th>Entry</th><th>Kya hai</th></tr></thead><tbody><tr><td><code>AndroidManifest.xml</code></td><td>Compiled (binary) manifest</td></tr><tr><td><code>classes.dex</code></td><td>Java/Kotlin ka bytecode</td></tr><tr><td><code>resources.arsc</code></td><td>Compiled resources (strings, colours, ids)</td></tr><tr><td><code>assets/</code></td><td>Aapki raw files (game ka HTML/JS)</td></tr><tr><td><code>res/</code></td><td>Compiled resources</td></tr><tr><td><code>lib/&lt;abi&gt;/*.so</code></td><td>Native libraries (agar hon)</td></tr><tr><td><code>META-INF/</code></td><td>Signature / metadata</td></tr></tbody></table>
+<p>Isi wajah se APK mein aap <code>.java</code> file nahi dekhenge — woh <code>classes.dex</code> ban jaati hai.</p>
+<hr/>
+<h2>7. File extension ka catalogue</h2>
+<table><thead><tr><th>Extension</th><th>Kya hota hai</th><th>Kahan</th></tr></thead><tbody><tr><td><code>.java</code> / <code>.kt</code></td><td>Code (Java / Kotlin)</td><td><code>app/src/main/java/</code></td></tr><tr><td><code>.xml</code></td><td>Manifest, layout, values, drawable</td><td><code>app/src/main/</code></td></tr><tr><td><code>.kts</code></td><td>Gradle build script (Kotlin)</td><td>root, <code>app/</code></td></tr><tr><td><code>.properties</code></td><td>Settings (key=value)</td><td>root, <code>gradle/wrapper/</code></td></tr><tr><td><code>.jar</code></td><td>Java library / Gradle wrapper</td><td><code>gradle/wrapper/</code>, <code>libs/</code></td></tr><tr><td><code>.aar</code></td><td>Android library</td><td><code>libs/</code></td></tr><tr><td><code>.so</code></td><td>Native library</td><td><code>lib/&lt;abi&gt;/</code></td></tr><tr><td><code>.html</code>, <code>.css</code>, <code>.js</code></td><td>Web page / game</td><td><code>assets/</code></td></tr><tr><td><code>.json</code></td><td>Settings / data</td><td><code>assets/config/</code></td></tr><tr><td><code>.png</code>, <code>.webp</code>, <code>.jpg</code></td><td>Images</td><td><code>res/drawable/</code>, <code>mipmap/</code></td></tr><tr><td><code>.ttf</code>, <code>.otf</code></td><td>Fonts</td><td><code>res/font/</code>, <code>assets/</code></td></tr><tr><td><code>.mp3</code>, <code>.ogg</code>, <code>.wav</code></td><td>Sound</td><td><code>res/raw/</code>, <code>assets/</code></td></tr><tr><td><code>.apk</code></td><td>Installable app (build ke baad)</td><td><code>app/build/outputs/apk/</code></td></tr><tr><td><code>.aab</code></td><td>Play Store upload format</td><td><code>app/build/outputs/bundle/</code></td></tr></tbody></table>
+<hr/>
+<h2>8. Is project ki har file — ek-ek karke</h2>
+<table><thead><tr><th>#</th><th>File</th><th>Status</th><th>Kya karti hai</th></tr></thead><tbody><tr><td>1</td><td><code>README.md</code></td><td>✔ bani hui</td><td>Project ka parichay</td></tr><tr><td>2</td><td><code>LICENSE</code></td><td>✔</td><td>MIT license</td></tr><tr><td>3</td><td><code>.gitignore</code></td><td>✔</td><td>Build files ko Git se bahar rakhta hai</td></tr><tr><td>4</td><td><code>settings.gradle.kts</code></td><td>✔</td><td>Module + repositories</td></tr><tr><td>5</td><td><code>build.gradle.kts</code></td><td>✔</td><td>Android plugin version</td></tr><tr><td>6</td><td><code>gradle.properties</code></td><td>✔</td><td>Gradle settings</td></tr><tr><td>7</td><td><code>gradlew</code> / <code>gradlew.bat</code></td><td>✔</td><td>Build chalane wali script</td></tr><tr><td>8</td><td><code>gradle/wrapper/gradle-wrapper.jar</code></td><td>✔</td><td>Wrapper ka engine</td></tr><tr><td>9</td><td><code>gradle/wrapper/gradle-wrapper.properties</code></td><td>✔</td><td>Gradle version (8.11.1)</td></tr><tr><td>10</td><td><code>app/build.gradle.kts</code></td><td>✔</td><td>App ki build settings</td></tr><tr><td>11</td><td><code>app/proguard-rules.pro</code></td><td>✔</td><td>Release rules</td></tr><tr><td>12</td><td><code>app/src/main/AndroidManifest.xml</code></td><td>✔</td><td>App ki pehchaan + activity</td></tr><tr><td>13</td><td><code>app/src/main/java/com/snakegame/app/MainActivity.java</code></td><td>✔</td><td>App ka main screen (WebView)</td></tr><tr><td>14</td><td><code>app/src/main/res/values/strings.xml</code></td><td>✔</td><td>App ka naam</td></tr><tr><td>15</td><td><code>app/src/main/res/values/colors.xml</code></td><td>✔</td><td>Rang</td></tr><tr><td>16</td><td><code>app/src/main/res/mipmap-*/ic_launcher.png</code></td><td>✔</td><td>App icon (5 sizes)</td></tr><tr><td>17</td><td><code>app/src/main/assets/index.html</code></td><td>✔ (placeholder)</td><td>Abhi ka shuruaati page</td></tr><tr><td>18</td><td><code>app/src/main/assets/config/app_config.json</code></td><td>✔</td><td>Game settings</td></tr><tr><td>19</td><td><code>app/src/main/assets/game/</code></td><td>⏳ khali</td><td>Game ka code yahan aayega</td></tr><tr><td>20</td><td><code>.github/workflows/build-apk.yml</code></td><td>✔</td><td>Har push par APK build + release</td></tr><tr><td>21</td><td><code>docs/FILES-HINDI.md</code></td><td>✔</td><td>Yahi document</td></tr><tr><td>22</td><td><code>docs/FILE-TREE.txt</code></td><td>✔</td><td>Folder tree</td></tr><tr><td>23</td><td><code>docs/ROADMAP.md</code></td><td>✔</td><td>Aage ka plan</td></tr></tbody></table>
+<hr/>
+<h2>9. Naya kuch banate waqt kahan rakhein</h2>
+<table><thead><tr><th>Aap kya bana rahe hain</th><th>Kahan rakhein</th></tr></thead><tbody><tr><td>Naya screen / logic</td><td><code>app/src/main/java/com/snakegame/app/</code></td></tr><tr><td>Naya text / colour</td><td><code>res/values/strings.xml</code>, <code>colors.xml</code></td></tr><tr><td>Image / icon</td><td><code>res/drawable/</code> (icon ke liye <code>mipmap-*/</code>)</td></tr><tr><td>Game ka JS / HTML / sprite / sound</td><td><code>assets/game/</code></td></tr><tr><td>Settings ka data</td><td><code>assets/config/app_config.json</code></td></tr><tr><td>Naya permission</td><td><code>AndroidManifest.xml</code></td></tr><tr><td>Nayi library</td><td><code>app/build.gradle.kts</code> ke <code>dependencies { }</code></td></tr><tr><td>Naya build step</td><td><code>.github/workflows/build-apk.yml</code></td></tr></tbody></table>
+<hr/>
+<h2>10. Safe practices (yaad rakhein)</h2>
+<ol><li><code>local.properties</code> kabhi GitHub par na daalein — usme aapke computer ka path hota hai.</li><li><code>build/</code> folder commit na karein — woh har build par dobara banta hai.</li><li>File ke naam chhote letters + underscore mein rakhein (<code>snake_food.png</code>), spaces aur capital letters se bachein.</li><li><code>applicationId</code> ek baar tay hone ke baad na badlein — woh app ki permanent ID hoti hai.</li><li>APK ka size chhota rakhne ke liye images ko <code>.webp</code> mein rakhein.</li><li>Har badlav ke baad: <code>./gradlew assembleDebug</code> chala kar dekhein ki build pass hai.</li><li>Version badhate rahein: <code>versionCode</code> (number) aur <code>versionName</code> (dikhne wala) dono.</li></ol>
+<hr/>
+<h2>11. Build kaise chalega</h2>
+<pre><code># local machine par
+./gradlew assembleDebug
+# output: app/build/outputs/apk/debug/app-debug.apk
+
+# GitHub par
+git push  →  Actions → Build APK  →  release mein APK taiyar</code></pre>
+<p>Direct download link (build ke baad):</p>
+<p><code>https://github.com/rewpal5-dotcom/Snake-Game/releases/latest/download/app-debug.apk</code></p>
+<hr/>
+<p>*Ye document project ke saath hi update hota rahega — jab bhi koi nayi file add ho, uski entry table (section 8) mein add ki jayegi.*</p>
+</body></html>
