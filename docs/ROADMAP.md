@@ -5,19 +5,19 @@
 - Placeholder page + config file
 - Files ki poori documentary
 
-## v0.2 — Core game
+## v0.2 — Core game ✅ (ho gaya)
 - 20×20 board, snake movement, apple, score
 - Swipe controls (mobile) + arrow keys (desktop)
 - Game over + restart
 - High score (localStorage)
 
-## v0.3 — Mazaa
+## v0.3 — Mazaa ✅ (sound, vibration, levels, obstacles — ho gaya)
 - Sound effects (khaana, maut, level up)
 - Vibration
 - Levels: har 10 apple par speed badhe
 - Deewarein / obstacles
 
-## v0.4 — Polish
+## v0.4 — Polish ✅ (theme, pause, settings — ho gaya)
 - Neon theme + smooth animation
 - Pause / resume
 - Settings screen (sound, vibration, board size)
